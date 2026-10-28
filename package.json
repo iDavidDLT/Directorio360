@@ -1,0 +1,13 @@
+{
+  "name": "directorio360-progreso-1",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Una pantalla responsive de comparación de cuentas de Directorio360.",
+  "scripts": {
+    "build": "sass --style=expanded --no-source-map scss/main.scss assets/css/main.css",
+    "watch": "sass --watch --style=expanded --no-source-map scss/main.scss:assets/css/main.css",
+    "start": "node scripts/server.cjs"
+  },
+  "devDependencies": { "sass": "1.106.1" },
+  "engines": { "node": ">=20.19" }
+}

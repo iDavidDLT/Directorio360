@@ -1,0 +1,28 @@
+@use '../abstracts/tokens' as t;
+@use '../abstracts/mixins' as m;
+
+.button {
+  @include m.flex-center(9px);
+  min-height: 44px; padding: 12px 17px; border-radius: 9px; border: 1px solid transparent; font-size: 12px; font-weight: 750; line-height: 1.4; transition: background .18s, transform .18s, box-shadow .18s;
+  &:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 5px 12px #153c3412; }
+  &--dark { color: t.$white; background: t.$forest; &:hover:not(:disabled) { background: t.$forest-light; } }
+  &--light { color: t.$forest; background: #f3f6ee; border-color: #e6ebde; &:hover:not(:disabled) { background: #e8efde; } }
+  .icon { width: 17px; height: 17px; }
+}
+.text-button { @include m.flex-center(7px); min-height: 44px; border: 0; padding: 6px 0; background: transparent; color: t.$forest; font-size: 11px; font-weight: 750; &:hover { text-decoration: underline; text-underline-offset: 4px; } .icon { width: 15px; height: 15px; } }
+.icon-button { @include m.flex-center; width: 44px; height: 44px; padding: 0; background: transparent; border: 1px solid t.$line; border-radius: 10px; &:hover { background: t.$paper; } }
+.avatar { @include m.flex-center; flex-shrink: 0; width: 36px; height: 36px; font-size: 11px; font-weight: 800; border-radius: 50%; color: t.$forest; background: #e6eddd;
+  &--small { width: 32px; height: 32px; font-size: 12px; }
+  &--self { background: #476455; color: #ebf1db; }
+  &--account { width: 48px; height: 48px; border-radius: 14px; background: #e9eee1; font-size: 16px; }
+}
+.eyebrow { display: flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 800; letter-spacing: 1.55px; line-height: 1.6; span { width: 6px; height: 6px; border-radius: 50%; background: #8ca877; } &--muted { color: t.$muted; font-size: 10px; letter-spacing: 1.5px; } }
+.pill { display: inline-flex; align-items: center; gap: 4px; border-radius: 6px; padding: 6px 8px; font-size: 12px; font-weight: 700; white-space: nowrap;
+  &--neutral { color: #626e5d; background: #f3f5f0; border: 1px solid #e8ece3; }
+  &--warm { color: t.$warm; background: t.$warm-bg; }
+  &--success { color: #4a6a46; background: #eef5e9; }
+}
+.panel { @include m.surface; min-width: 0;
+  &__heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; h2 { font-size: 16px; font-weight: 750; letter-spacing: -.5px; line-height: 1.5; } p:not(.eyebrow) { margin-top: 5px; color: t.$muted; font-size: 11px; line-height: 1.6; } .eyebrow { margin-bottom: 6px; } }
+}
+.status-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #7a9b5f; flex-shrink: 0; }

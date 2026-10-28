@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#153c34">
+  <meta name="description" content="Directorio360: panel de comparación y revisión de cuentas de un directorio organizacional.">
+  <title>Directorio360 · Comparaciones</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script src="assets/js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+    <symbol id="i-compare" viewBox="0 0 24 24"><path d="M4 7h15m-4-4 4 4-4 4M20 17H5m4-4-4 4 4 4"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 5a3 3 0 0 1 0 6m3 10v-3a6 6 0 0 0-2-4"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M4 16v5h16v-5"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v1"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-10m-7 0h7v7"/></symbol>
+  </svg>
+  <div class="workspace">
+    <aside class="sidebar" id="navegacion" aria-label="Navegación principal">
+      <a class="brand" href="#resumen" aria-label="Directorio360, inicio"><span class="brand__mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span><span>directorio<span class="brand__suffix">360</span><small>IDENTIDADES EN EQUILIBRIO</small></span></a>
+      <div class="sidebar__workspace"><span class="sidebar__workspace-icon">D</span><span>Dominio de prueba<small>directorio.local</small></span><span class="sidebar__workspace-dot" aria-hidden="true"></span></div>
+      <p class="sidebar__label">ESPACIO DE TRABAJO</p>
+      <nav class="navigation">
+        <a class="navigation__item" href="#resumen"><svg class="icon"><use href="#i-grid"/></svg>Vista general</a>
+        <a class="navigation__item navigation__item--active" href="#comparaciones" aria-current="location"><svg class="icon"><use href="#i-compare"/></svg>Comparaciones<span class="navigation__count" id="nav-count">4</span></a>
+        <a class="navigation__item" href="#cuentas"><svg class="icon"><use href="#i-users"/></svg>Directorio de cuentas</a>
+        <a class="navigation__item" href="#actividad"><svg class="icon"><use href="#i-clock"/></svg>Actividad reciente</a>
+      </nav>
+      <div class="sidebar__note"><svg class="icon"><use href="#i-shield"/></svg><p>Una revisión a tiempo<br><strong>hace la diferencia.</strong></p><span>Compara. Revisa. Decide.</span><div class="sidebar__note-orbit" aria-hidden="true"></div></div>
+      <div class="sidebar__footer"><span class="avatar avatar--self">SP</span><span>Steven Pacheco<small>Administrador del espacio</small></span><span class="sidebar__online" title="Perfil de demostración"></span></div>
+    </aside>
+    <button class="nav-scrim" type="button" aria-label="Cerrar navegación" tabindex="-1" hidden></button>
+    <main class="main" id="contenido">
+      <header class="topbar">
+        <div class="topbar__location"><button class="icon-button topbar__menu" id="menu-button" type="button" aria-label="Abrir navegación" aria-expanded="false" aria-controls="navegacion"><svg class="icon"><use href="#i-menu"/></svg></button><span>Espacio de trabajo</span><svg class="icon"><use href="#i-chevron"/></svg><strong>Comparaciones</strong></div>
+        <div class="topbar__meta"><span class="demo-label"><span></span>Modo demostración</span><span class="topbar__divider"></span><span class="avatar avatar--small">SP</span></div>
+      </header>
+      <div class="main__content">
+        <section class="overview" id="resumen" aria-labelledby="page-title">
+          <div class="overview__heading"><div><p class="eyebrow"><span></span>CONTROL DE IDENTIDADES</p><h1 id="page-title">Tu directorio, <em>en orden.</em></h1><p class="overview__description">Lo que esperas. Lo que existe. Y lo que puedes mejorar.</p></div><button class="button button--dark" id="compare-button" type="button"><svg class="icon"><use href="#i-plus"/></svg>Nueva comparación</button></div>
+          <div class="metrics" aria-label="Resumen de las seis cuentas de demostración">
+            <article class="metric"><div class="metric__icon"><svg class="icon"><use href="#i-users"/></svg></div><div class="metric__body"><p>Cuentas en el ámbito</p><strong id="metric-accounts">06</strong><span>Ventas · Tecnología · Finanzas</span></div><span class="metric__tag">3 áreas</span></article>
+            <article class="metric"><div class="metric__icon metric__icon--warm"><svg class="icon"><use href="#i-compare"/></svg></div><div class="metric__body"><p>Cuentas por revisar</p><strong id="metric-drift">04</strong><span id="metric-drift-detail">10 diferencias detectadas</span></div><span class="metric__signal" aria-hidden="true"></span></article>
+            <article class="metric metric--compliance"><div class="metric__body"><p>Criterios coincidentes</p><strong id="metric-percent">72<span>%</span></strong><span id="metric-match-detail">26 de 36 criterios evaluados</span></div><div class="mini-ring" id="mini-ring" style="--progress:72" aria-hidden="true"><svg class="icon"><use href="#i-shield"/></svg></div></article>
+          </div>
+        </section>
+        <div class="content-grid" id="comparaciones">
+          <section class="comparison panel" aria-labelledby="comparison-title">
+            <div class="panel__heading"><div><p class="eyebrow eyebrow--muted">COMPARACIÓN ACTIVA</p><h2 id="comparison-title">De la diferencia a la decisión</h2></div><span class="pill pill--neutral">CMP <span id="comparison-number">001</span></span></div>
+            <div class="account-summary"><span class="avatar avatar--account" id="selected-initials">ML</span><div class="account-summary__person"><h3 id="selected-name">María López</h3><p><span id="selected-username">mlopez</span><span class="account-summary__separator">/</span><span id="selected-area">Ventas</span></p></div><div class="account-summary__profile"><span>PERFIL ESPERADO</span><strong id="selected-profile">Ventas <span>v3</span></strong></div></div>
+            <div class="comparison__status"><span><span class="status-dot"></span>Lectura completa</span><span id="comparison-time">Captura de demostración</span></div>
+            <div class="comparison__tabs" role="group" aria-label="Filtrar criterios de comparación"><button type="button" class="comparison__tab comparison__tab--active" data-criteria="all" aria-pressed="true">Todos los criterios <span id="criteria-total">6</span></button><button type="button" class="comparison__tab" data-criteria="differences" aria-pressed="false">Solo diferencias <span id="criteria-differences">4</span></button></div>
+            <p class="comparison__scroll-hint">Desliza la tabla para ver todos los campos <span aria-hidden="true">→</span></p>
+            <div class="comparison__table-wrap" tabindex="0" role="region" aria-label="Tabla de criterios, desplazable en pantallas pequeñas"><table class="comparison-table"><caption class="sr-only">Comparación entre el perfil esperado y el estado observado de la cuenta seleccionada</caption><thead><tr><th scope="col">CRITERIO</th><th scope="col">ESPERADO</th><th scope="col">OBSERVADO</th><th scope="col">RESULTADO</th></tr></thead><tbody id="criteria-body"></tbody></table></div>
+            <div class="comparison__footer"><p><svg class="icon"><use href="#i-info"/></svg>Comparar te informa. Tú decides el siguiente paso.</p><button class="text-button" id="export-button" type="button"><svg class="icon"><use href="#i-download"/></svg>Exportar CSV</button></div>
+          </section>
+          <aside class="insights" aria-label="Diagnóstico y revisión">
+            <section class="health-card" aria-labelledby="health-title"><div class="health-card__top"><span class="eyebrow">EL ESTADO DE ESTA CUENTA</span><svg class="icon"><use href="#i-trend"/></svg></div><div class="health-card__score"><strong id="account-score">33<span>%</span></strong><span>de coincidencia<br>con su perfil</span></div><div class="health-card__bar" aria-hidden="true"><span id="health-bar" style="width:33.33%"></span></div><div class="health-card__legend"><span><i></i><b id="account-matches">2</b> coinciden</span><span><i></i><b id="account-differences">4</b> difieren</span></div><p id="health-title">Un panorama claro.<br>Una mejor decisión.</p><div class="health-card__decoration" aria-hidden="true"></div></section>
+            <section class="review-card panel" aria-labelledby="review-title"><span class="review-card__icon"><svg class="icon"><use href="#i-shield"/></svg></span><span class="pill pill--warm" id="review-count">4 por revisar</span><h2 id="review-title">Los cambios empiezan<br>con una revisión.</h2><p>Consulta cada diferencia y prepara una solicitud antes de corregirla.</p><button class="button button--light" id="review-button" type="button">Revisar diferencias<svg class="icon"><use href="#i-arrow"/></svg></button><small>Simulación local · sin cambios en AD</small></section>
+          </aside>
+        </div>
+        <div class="bottom-grid">
+          <section class="directory panel" id="cuentas" aria-labelledby="directory-title"><div class="panel__heading"><div><h2 id="directory-title">Las personas detrás del directorio</h2><p>Selecciona una cuenta para explorar sus criterios.</p></div><span class="pill pill--neutral">6 cuentas</span></div><div class="directory__toolbar"><label class="search"><svg class="icon"><use href="#i-search"/></svg><input id="account-search" type="search" placeholder="Buscar nombre o usuario…" autocomplete="off" aria-label="Buscar cuenta por nombre o usuario"></label><label class="directory__filter"><span class="sr-only">Filtrar cuentas por estado</span><select id="account-filter"><option value="all">Todos los estados</option><option value="differences">Con diferencias</option><option value="match">Coincidentes</option></select></label></div><div class="directory__accounts" id="accounts-list"></div><p class="directory__empty" id="accounts-empty" hidden>No encontramos cuentas con esos criterios.</p><div class="directory__footer"><span id="accounts-count" role="status">Mostrando 6 de 6 cuentas</span><button class="text-button" id="reset-button" type="button">Restablecer demo<svg class="icon"><use href="#i-compare"/></svg></button></div></section>
+          <section class="activity panel" id="actividad" aria-labelledby="activity-title"><div class="panel__heading"><div><h2 id="activity-title">Cada paso cuenta</h2><p>Actividad de esta sesión</p></div><svg class="icon"><use href="#i-clock"/></svg></div><ol class="timeline" id="activity-list"></ol><div class="activity__footer"><span class="status-dot"></span>Historial de demostración, guardado en este navegador.</div></section>
+        </div>
+        <footer class="page-footer"><span>Directorio360<span class="page-footer__dot">·</span>Claridad para administrar.</span><span>Ingeniería Web <span class="page-footer__dot">/</span> Progreso 01</span></footer>
+      </div>
+    </main>
+  </div>
+  <dialog class="review-dialog" id="review-dialog" aria-labelledby="dialog-title"><div class="review-dialog__header"><span class="eyebrow">REVISIÓN DE DIFERENCIAS</span><button class="icon-button" id="close-dialog" type="button" aria-label="Cerrar revisión"><svg class="icon"><use href="#i-close"/></svg></button></div><h2 id="dialog-title">Una diferencia a la vez.</h2><p class="review-dialog__description" id="dialog-account"></p><form id="review-form"><fieldset id="review-options"><legend class="sr-only">Selecciona una diferencia para corregir</legend></fieldset><label class="review-dialog__label" for="justification">¿Por qué debe corregirse?</label><textarea id="justification" name="justification" minlength="10" maxlength="240" rows="3" required placeholder="Explica el motivo de esta solicitud (mínimo 10 caracteres)."></textarea><p class="review-dialog__notice"><svg class="icon"><use href="#i-info"/></svg>Esta acción simula una corrección en tu navegador. No se conecta a Active Directory.</p><div class="review-dialog__actions"><button class="button button--light" id="cancel-dialog" type="button">Cancelar</button><button class="button button--dark" type="submit">Simular corrección<svg class="icon"><use href="#i-check"/></svg></button></div></form></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden><svg class="icon"><use href="#i-check"/></svg><span></span></div>
+</body>
+</html>

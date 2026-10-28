@@ -1,0 +1,45 @@
+@use '../abstracts/tokens' as t;
+@use '../abstracts/mixins' as m;
+
+.comparison { padding: 25px 24px 8px;
+  &__status { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 15px 0; border-bottom: 1px solid t.$line; font-size: 11px; color: #626e5d; > span:first-child { display: inline-flex; align-items: center; gap: 6px; color: #5d7950; } }
+  &__tabs { display: flex; gap: 24px; margin-top: 7px; border-bottom: 1px solid t.$line; }
+  &__tab { display: flex; align-items: center; gap: 8px; min-height: 50px; border: 0; border-bottom: 2px solid transparent; padding: 12px 0; background: transparent; font-size: 12px; font-weight: 650; color: #626e5d; transition: border-color .2s, color .2s; span { font-size: 10px; min-width: 17px; padding: 3px 5px; border-radius: 4px; background: #f0f3ea; } &:hover { color: t.$forest; } &--active { color: t.$forest; border-bottom-color: t.$forest; } }
+  &__table-wrap { width: 100%; overflow-x: auto; }
+  &__scroll-hint { display: none; }
+  &__footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 56px; > p { display: flex; align-items: center; gap: 6px; font-size: 10px; color: #626e5d; line-height: 1.6; .icon { width: 13px; height: 13px; } } .text-button { font-size: 11px; white-space: nowrap; } }
+}
+.account-summary { display: flex; align-items: center; gap: 13px; margin-top: 24px; padding: 17px; border: 1px solid #e9ede4; border-radius: 11px; background: #f8f9f5;
+  &__person { h3 { font-size: 13px; font-weight: 750; } p { margin-top: 5px; font-size: 12px; color: #626e5d; } }
+  &__separator { margin: 0 8px; color: #bdc5b5; }
+  &__profile { margin-left: auto; padding-left: 10px; border-left: 1px solid #e0e6d8; > span { display: block; font-size: 9px; font-weight: 650; color: #626e5d; letter-spacing: 1px; } strong { display: flex; align-items: center; gap: 7px; margin-top: 7px; font-size: 11px; font-weight: 750; span { padding: 2px 5px; background: #e9efde; border-radius: 4px; color: #626e5d; font-size: 10px; } } }
+}
+.comparison-table { width: 100%; border-collapse: collapse; text-align: left; white-space: nowrap;
+  th { padding: 17px 7px 13px; border-bottom: 1px solid t.$line; font-size: 11px; color: #66725f; letter-spacing: .7px; font-weight: 700; }
+  td { padding: 16px 7px; border-bottom: 1px solid #eef0ea; font-size: 12px; color: #64705f; line-height: 1.6; &:first-child { color: #53634c; font-weight: 650; } &:nth-child(2) { color: #53694c; } }
+  tr:last-child td { border-bottom: 0; }
+  tbody tr { transition: background .18s; &:hover { background: #f8faf4; } }
+  .pill { padding: 4px 7px; font-size: 12px; gap: 4px; .icon { width: 10px; height: 10px; } }
+  &__changed { color: t.$warm !important; }
+  &__group { font-family: 'Manrope',sans-serif; font-size: 11px !important; }
+}
+.health-card { position: relative; overflow: hidden; min-height: 237px; padding: 24px; border-radius: t.$radius; color: #e6eddf; background: radial-gradient(ellipse at 100% 20%, #315f48 0, #1d463a 55%, #1b4137 100%);
+  &__top { display: flex; justify-content: space-between; align-items: center; gap: 5px; .eyebrow { font-size: 9px; color: #b0c9ab; letter-spacing: 1.2px; } .icon { width: 17px; height: 17px; color: t.$lime; } }
+  &__score { position: relative; z-index: 1; display: flex; align-items: center; gap: 14px; margin-top: 20px; > strong { font-size: 48px; font-weight: 500; letter-spacing: -2px; line-height: 1.2; span { font-size: 24px; margin-left: 3px; color: t.$lime; } } > span { font-size: 11px; line-height: 1.8; color: #c1d2bb; } }
+  &__bar { position: relative; z-index: 1; height: 5px; background: #ffffff1f; border-radius: 4px; margin-top: 19px; overflow: hidden; span { display: block; height: 100%; background: t.$lime; border-radius: 4px; transition: width .5s ease; } }
+  &__legend { position: relative; z-index: 1; display: flex; gap: 18px; margin-top: 13px; font-size: 10px; color: #c4d2bb; > span { display: flex; align-items: center; gap: 4px; i { width: 4px; height: 4px; border-radius: 50%; background: t.$lime; margin-right: 1px; } &:last-child i { background: #6d8d75; } b { font-weight: 500; } } }
+  > p { position: relative; z-index: 1; margin-top: 26px; font-size: 15px; font-weight: 450; line-height: 1.6; letter-spacing: -.3px; }
+  &__decoration { position: absolute; right: -65px; bottom: -79px; width: 230px; height: 230px; border: 1px solid #c6dfab19; border-radius: 50%; &::before, &::after { position: absolute; content: ''; inset: 24px; border: inherit; border-radius: 50%; } &::after { inset: 49px; } }
+}
+.review-card { position: relative; padding: 22px;
+  &__icon { @include m.flex-center; width: 33px; height: 33px; border: 1px solid #e7ecdf; border-radius: 9px; color: #7b9061; background: #f6f8f0; .icon { width: 18px; height: 18px; } }
+  > .pill { position: absolute; top: 25px; right: 20px; font-size: 10px; }
+  h2 { font-size: 16px; letter-spacing: -.4px; line-height: 1.6; margin-top: 16px; font-weight: 650; }
+  > p { color: #626e5d; font-size: 12px; line-height: 1.8; margin-top: 8px; }
+  > .button { width: 100%; justify-content: space-between; margin-top: 17px; font-size: 12px; }
+  > small { display: block; margin-top: 12px; color: #626e5d; font-size: 10px; text-align: center; }
+}
+@include m.down(wide) { .comparison { padding: 22px 18px 6px; } .health-card { padding: 22px 20px; } .comparison__footer > p { max-width: 215px; } }
+@include m.down(tablet) { .health-card { min-height: 275px; } .comparison__footer > p { max-width: none; } }
+@include m.down(mobile) { .comparison__scroll-hint { display: flex; justify-content: space-between; gap: 8px; margin-top: 12px; color: #626e5d; font-size: 10px; line-height: 1.7; } }
+@include m.down(mobile) { .comparison { padding: 21px 16px 5px; &__table-wrap { margin: 0 -4px; width: calc(100% + 8px); } &__footer { align-items: flex-start; padding-top: 7px; flex-direction: column; gap: 0; > p { margin-top: 7px; font-size: 11px; } } &__tabs { gap: 17px; } &__tab { font-size: 12px; } &__status { font-size: 10px; flex-wrap: wrap; } } .comparison-table { min-width: 485px; th { font-size: 9px; } td { padding-top: 15px; padding-bottom: 15px; font-size: 12px; } .pill { font-size: 11px; } } .account-summary { flex-wrap: wrap; gap: 10px; padding: 13px; &__person h3 { font-size: 12px; } &__profile { padding-left: 8px; > span { font-size: 8px; } strong { font-size: 11px; } } .avatar--account { width: 38px; height: 38px; font-size: 13px; } } .health-card { padding: 23px; min-height: 270px; &__top .eyebrow { font-size: 10px; } &__score > span { font-size: 11px; } &__legend { font-size: 12px; } } .review-card { padding: 23px; > p { font-size: 12px; } > .button { font-size: 12px; } > small { font-size: 12px; } } }
