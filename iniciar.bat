@@ -1,13 +1,9 @@
 @echo off
 cd /d "%~dp0"
-where node >nul 2>nul
-if errorlevel 1 (
-  echo Instala Node.js 24 LTS para usar el servidor local.
-  echo Tambien puedes abrir index.html directamente para revisar la pantalla.
+if not exist .venv\Scripts\python.exe (
+  echo Crea el entorno .venv e instala requirements.txt como indica README.md.
   pause
   exit /b 1
 )
-echo Abre http://127.0.0.1:4173 en el navegador.
-echo Para detener el servidor, presiona Ctrl+C.
-node scripts\server.cjs
+powershell -NoProfile -Command "$p=Read-Host 'Clave local de administracion' -AsSecureString; $env:ADMIN_PASSWORD=[Net.NetworkCredential]::new('', $p).Password; Write-Host 'Abre http://127.0.0.1:4173'; & .\.venv\Scripts\python.exe app.py"
 pause

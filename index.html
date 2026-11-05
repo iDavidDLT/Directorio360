@@ -8,7 +8,7 @@
   <title>Directorio360 · Comparaciones</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/main.css">
-  <script src="assets/js/app.js" defer></script>
+  <script type="application/json" id="directory-data">{{ directory_accounts|tojson }}</script><script src="assets/js/app.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -37,7 +37,7 @@
       <nav class="navigation">
         <a class="navigation__item" href="#resumen"><svg class="icon"><use href="#i-grid"/></svg>Vista general</a>
         <a class="navigation__item navigation__item--active" href="#comparaciones" aria-current="location"><svg class="icon"><use href="#i-compare"/></svg>Comparaciones<span class="navigation__count" id="nav-count">4</span></a>
-        <a class="navigation__item" href="#cuentas"><svg class="icon"><use href="#i-users"/></svg>Directorio de cuentas</a>
+        <a class="navigation__item" href="/admin"><svg class="icon"><use href="#i-shield"/></svg>Administrar cuentas</a><a class="navigation__item" href="#cuentas"><svg class="icon"><use href="#i-users"/></svg>Directorio de cuentas</a>
         <a class="navigation__item" href="#actividad"><svg class="icon"><use href="#i-clock"/></svg>Actividad reciente</a>
       </nav>
       <div class="sidebar__note"><svg class="icon"><use href="#i-shield"/></svg><p>Una revisión a tiempo<br><strong>hace la diferencia.</strong></p><span>Compara. Revisa. Decide.</span><div class="sidebar__note-orbit" aria-hidden="true"></div></div>
@@ -85,3 +85,4 @@
   <div class="toast" id="toast" role="status" aria-live="polite" hidden><svg class="icon"><use href="#i-check"/></svg><span></span></div>
 </body>
 </html>
+

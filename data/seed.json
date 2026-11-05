@@ -1,0 +1,80 @@
+[
+  {
+    "id": "mlopez",
+    "name": "María López",
+    "initials": "ML",
+    "area": "Ventas",
+    "version": 3,
+    "title": "Asesora comercial",
+    "actualArea": "Comercial",
+    "enabled": false,
+    "group": "GRP_Ventas",
+    "member": false,
+    "extra": true
+  },
+  {
+    "id": "atorres",
+    "name": "Andrés Torres",
+    "initials": "AT",
+    "area": "Tecnología",
+    "version": 2,
+    "title": "Analista de sistemas",
+    "actualArea": "Tecnología",
+    "enabled": true,
+    "group": "GRP_Tecnologia",
+    "member": true,
+    "extra": false
+  },
+  {
+    "id": "cvera",
+    "name": "Camila Vera",
+    "initials": "CV",
+    "area": "Tecnología",
+    "version": 2,
+    "title": "Analista de sistemas",
+    "actualArea": "Soporte",
+    "enabled": true,
+    "group": "GRP_Tecnologia",
+    "member": false,
+    "extra": false
+  },
+  {
+    "id": "jruiz",
+    "name": "Javier Ruiz",
+    "initials": "JR",
+    "area": "Finanzas",
+    "version": 1,
+    "title": "Analista financiero",
+    "actualArea": "Finanzas",
+    "enabled": false,
+    "group": "GRP_Finanzas",
+    "member": true,
+    "extra": false
+  },
+  {
+    "id": "lcastro",
+    "name": "Lucía Castro",
+    "initials": "LC",
+    "area": "Finanzas",
+    "version": 1,
+    "title": "Analista financiera",
+    "actualArea": "Finanzas",
+    "enabled": true,
+    "group": "GRP_Finanzas",
+    "member": true,
+    "extra": false
+  },
+  {
+    "id": "sperez",
+    "name": "Sofía Pérez",
+    "initials": "SP",
+    "area": "Ventas",
+    "version": 3,
+    "title": "Asesora comercial",
+    "actualArea": "Comercial",
+    "enabled": true,
+    "group": "GRP_Ventas",
+    "member": false,
+    "extra": true
+  }
+]

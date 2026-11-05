@@ -1,14 +1,7 @@
 'use strict';
 
 // El servidor real de AD queda fuera de esta entrega de maquetación.
-const accounts = [
-  { id: 'mlopez', name: 'María López', initials: 'ML', area: 'Ventas', version: 3, title: 'Asesora comercial', actualArea: 'Comercial', enabled: false, group: 'GRP_Ventas', member: false, extra: true },
-  { id: 'atorres', name: 'Andrés Torres', initials: 'AT', area: 'Tecnología', version: 2, title: 'Analista de sistemas', actualArea: 'Tecnología', enabled: true, group: 'GRP_Tecnologia', member: true, extra: false },
-  { id: 'cvera', name: 'Camila Vera', initials: 'CV', area: 'Tecnología', version: 2, title: 'Analista de sistemas', actualArea: 'Soporte', enabled: true, group: 'GRP_Tecnologia', member: false, extra: false },
-  { id: 'jruiz', name: 'Javier Ruiz', initials: 'JR', area: 'Finanzas', version: 1, title: 'Analista financiero', actualArea: 'Finanzas', enabled: false, group: 'GRP_Finanzas', member: true, extra: false },
-  { id: 'lcastro', name: 'Lucía Castro', initials: 'LC', area: 'Finanzas', version: 1, title: 'Analista financiera', actualArea: 'Finanzas', enabled: true, group: 'GRP_Finanzas', member: true, extra: false },
-  { id: 'sperez', name: 'Sofía Pérez', initials: 'SP', area: 'Ventas', version: 3, title: 'Asesora comercial', actualArea: 'Comercial', enabled: true, group: 'GRP_Ventas', member: false, extra: true },
-];
+const accounts = JSON.parse(document.querySelector("#directory-data").textContent);
 const storageKey = 'directorio360-progreso1-v1';
 const validFields = new Set(['department', 'title', 'enabled', 'area-group', 'access-group', 'extra-group']);
 const $ = (selector) => document.querySelector(selector);
@@ -22,7 +15,8 @@ try { saved = JSON.parse(localStorage.getItem(storageKey) || '{}'); } catch { sa
 if (!saved || typeof saved !== 'object') saved = {};
 let corrections = Array.isArray(saved.corrections) ? saved.corrections.filter((item) => item && accounts.some((account) => account.id === item.account) && validFields.has(item.field)) : [];
 let events = Array.isArray(saved.events) ? saved.events.filter((event) => event && typeof event.title === 'string' && typeof event.detail === 'string' && typeof event.time === 'string').slice(0, 4) : [];
-let selectedId = 'mlopez';
+const firstId = accounts.find(a => a.id === 'mlopez')?.id || accounts[0]?.id;
+let selectedId = firstId;
 let criteriaFilter = 'all';
 let comparisonNumber = 1;
 let toastTimer;
@@ -32,7 +26,7 @@ let lastFocusedElement;
 function getCriteria(account) {
   const rows = [
     { id: 'department', name: 'Departamento', expected: account.area, observed: account.actualArea },
-    { id: 'title', name: 'Cargo', expected: account.title, observed: account.title },
+    { id: 'title', name: 'Cargo', expected: account.title, observed: account.actualTitle },
     { id: 'enabled', name: 'Cuenta habilitada', expected: 'Sí', observed: account.enabled ? 'Sí' : 'No' },
     { id: 'area-group', name: account.group, expected: 'Miembro', observed: 'Miembro', group: true },
     { id: 'access-group', name: 'GRP_AccesoPortal', expected: 'Miembro', observed: account.member ? 'Miembro' : 'No miembro', group: true },
@@ -115,7 +109,7 @@ function renderDirectory() {
   });
   $('#accounts-list').innerHTML = visible.map((account) => {
     const differences = getCriteria(account).filter((row) => !row.matches).length;
-    return `<button class="account${account.id === selectedId ? ' account--selected' : ''}" type="button" data-account="${account.id}" aria-pressed="${account.id === selectedId}" aria-label="Comparar a ${escapeHTML(account.name)}, ${differences} diferencias"><span class="avatar" aria-hidden="true">${account.initials}</span><span class="account__details"><strong>${escapeHTML(account.name)}</strong><small>${escapeHTML(account.id)} · ${escapeHTML(account.area)}</small></span><span class="account__indicator${differences ? '' : ' account__indicator--match'}" aria-hidden="true">${differences || icon('check')}</span></button>`;
+    return `<button class="account${account.id === selectedId ? ' account--selected' : ''}" type="button" data-account="${account.id}" aria-pressed="${account.id === selectedId}" aria-label="Comparar a ${escapeHTML(account.name)}, ${differences} diferencias"><span class="avatar" aria-hidden="true">${escapeHTML(account.initials)}</span><span class="account__details"><strong>${escapeHTML(account.name)}</strong><small>${escapeHTML(account.id)} · ${escapeHTML(account.area)}</small></span><span class="account__indicator${differences ? '' : ' account__indicator--match'}" aria-hidden="true">${differences || icon('check')}</span></button>`;
   }).join('');
   $('#accounts-empty').hidden = visible.length > 0;
   $('#accounts-count').textContent = `Mostrando ${visible.length} de ${accounts.length} cuentas`;
@@ -123,9 +117,9 @@ function renderDirectory() {
 
 function renderActivity() {
   const initial = [
-    { title: 'Comparación de mlopez preparada', detail: 'Perfil Ventas v3 · datos de demostración', time: 'Inicio' },
+    { title: "Comparación de " + firstId + " preparada", detail: 'Perfil de referencia del directorio', time: 'Inicio' },
     { title: 'Perfiles de referencia cargados', detail: 'Ventas, Tecnología y Finanzas', time: 'Inicio' },
-    { title: 'Espacio de prueba listo', detail: '6 cuentas ficticias · 36 criterios', time: 'Inicio' },
+    { title: 'Espacio de prueba listo', detail: accounts.length + " cuentas · " + accounts.length * 6 + " criterios", time: 'Inicio' },
   ];
   $('#activity-list').innerHTML = [...events, ...initial].slice(0, 4).map((event, index) => `<li class="timeline__item"><span class="timeline__icon">${icon(index === 0 ? 'compare' : index === 1 ? 'shield' : 'check')}</span><div class="timeline__body"><p>${escapeHTML(event.title)}</p><span>${escapeHTML(event.detail)}</span></div><time class="timeline__time">${escapeHTML(event.time)}</time></li>`).join('');
 }
@@ -213,7 +207,7 @@ $('#export-button').addEventListener('click', () => {
 });
 
 $('#reset-button').addEventListener('click', () => {
-  corrections = []; events = []; comparisonNumber = 1; selectedId = 'mlopez';
+  corrections = []; events = []; comparisonNumber = 1; selectedId = firstId;
   $('#account-search').value = ''; $('#account-filter').value = 'all';
   $('#comparison-time').textContent = 'Captura de demostración';
   criteriaFilter = 'all';
@@ -241,3 +235,4 @@ window.matchMedia('(min-width: 901px)').addEventListener('change', (event) => { 
 window.matchMedia('(max-width: 900px)').addEventListener('change', () => setMenu(false));
 setMenu(false);
 render();
+
