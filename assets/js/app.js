@@ -2,7 +2,7 @@
 
 // Los datos de las cuentas proceden del servidor.
 const accounts = JSON.parse(document.querySelector("#directory-data").textContent);
-const storageKey = 'directorio360-mvc-v1';
+const storageKey = 'directorio360-mvc-v2';
 const directorySnapshot = JSON.stringify(accounts);
 const validFields = new Set(['department', 'title', 'enabled', 'area-group', 'access-group', 'extra-group']);
 const $ = (selector) => document.querySelector(selector);
