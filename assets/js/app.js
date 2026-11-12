@@ -2,7 +2,8 @@
 
 // El servidor real de AD queda fuera de esta entrega de maquetación.
 const accounts = JSON.parse(document.querySelector("#directory-data").textContent);
-const storageKey = 'directorio360-progreso1-v1';
+const storageKey = 'directorio360-mvc-v1';
+const directorySnapshot = JSON.stringify(accounts);
 const validFields = new Set(['department', 'title', 'enabled', 'area-group', 'access-group', 'extra-group']);
 const $ = (selector) => document.querySelector(selector);
 const icon = (name) => `<svg class="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`;
@@ -12,7 +13,7 @@ const timeNow = () => new Intl.DateTimeFormat('es-EC', { hour: '2-digit', minute
 
 let saved;
 try { saved = JSON.parse(localStorage.getItem(storageKey) || '{}'); } catch { saved = {}; }
-if (!saved || typeof saved !== 'object') saved = {};
+if (!saved || typeof saved !== 'object' || saved.directorySnapshot !== directorySnapshot) saved = {};
 let corrections = Array.isArray(saved.corrections) ? saved.corrections.filter((item) => item && accounts.some((account) => account.id === item.account) && validFields.has(item.field)) : [];
 let events = Array.isArray(saved.events) ? saved.events.filter((event) => event && typeof event.title === 'string' && typeof event.detail === 'string' && typeof event.time === 'string').slice(0, 4) : [];
 const firstId = accounts.find(a => a.id === 'mlopez')?.id || accounts[0]?.id;
@@ -41,7 +42,7 @@ function getCriteria(account) {
 }
 
 function saveState() {
-  try { localStorage.setItem(storageKey, JSON.stringify({ corrections, events })); }
+  try { localStorage.setItem(storageKey, JSON.stringify({ corrections, events, directorySnapshot })); }
   catch { showToast('El navegador no permite guardar. Los cambios durarán esta sesión.'); }
 }
 
@@ -235,4 +236,3 @@ window.matchMedia('(min-width: 901px)').addEventListener('change', (event) => { 
 window.matchMedia('(max-width: 900px)').addEventListener('change', () => setMenu(false));
 setMenu(false);
 render();
-

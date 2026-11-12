@@ -2,6 +2,8 @@
 
 Directorio360 compara cuentas de un directorio con el perfil que deberían tener. En **Administrar cuentas** se crean, consultan, editan y eliminan las identidades que aparecen en el comparador. El departamento y cargo elegidos definen el perfil esperado. Los valores observados se registran por separado para detectar diferencias. Se incluyen seis cuentas ficticias para la entrega académica.
 
+[Aplicación desplegada](https://directorio360-mvc.onrender.com) · [Administrar cuentas](https://directorio360-mvc.onrender.com/admin)
+
 ## Ejecutar
 
 Requiere Python 3.12 o posterior. En Windows, desde la raíz:
@@ -32,6 +34,6 @@ Abre http://127.0.0.1:4173 y entra en **Administrar cuentas** con la clave elegi
 
 ## Despliegue y evidencia
 
-El Blueprint `render.yaml` vincula el servicio web y la base PostgreSQL en el plan gratuito de Render. La clave administrativa se genera en el servicio (Environment → ADMIN_PASSWORD). El panel público usa exclusivamente datos académicos ficticios. Revisa la fecha de caducidad de la base gratuita en el Dashboard antes de la entrega. El comando de inicio es `python app.py`.
+El Blueprint `render.yaml` vincula el servicio web y la base PostgreSQL en el plan gratuito de Render. La clave administrativa se genera en el servicio (Environment → ADMIN_PASSWORD). El panel público usa exclusivamente datos académicos ficticios. La base gratuita actual caduca el **5 de diciembre de 2026** según Render. El servicio puede tardar en despertar después de un período sin visitas. El comando de inicio es `python app.py`.
 
-Ejecuta `python -m unittest discover -s tests` para probar la integración con una base temporal. El recorrido de la defensa está en [el guion](docs/VIDEO.md). La [memoria de Progreso 1](docs/PROGRESO1.md) recoge la maquetación original.
+Ejecuta `python -m unittest discover -s tests` para probar la integración con una base temporal. Se verificaron el despliegue, el login y los selectores dependientes en el navegador. El recorrido de la defensa está en [el guion](docs/VIDEO.md). El video final con la voz del autor está pendiente de grabación y publicación. La [memoria de Progreso 1](docs/PROGRESO1.md) recoge la maquetación original.
