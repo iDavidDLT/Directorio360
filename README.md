@@ -22,7 +22,7 @@ Abre http://127.0.0.1:4173 y entra en **Administrar cuentas** con la clave elegi
 1. Crea una cuenta y selecciona **Finanzas**. El selector de cargos carga los perfiles financieros. Cambia a **Tecnología** y selecciona **Analista de sistemas**.
 2. Registra **Soporte** como departamento observado. Guarda y busca la cuenta en el comparador. La fila Departamento mostrará Tecnología frente a Soporte.
 3. Intenta crear otra cuenta con el mismo usuario, incluso en mayúsculas. El controlador lo normaliza, rechaza el duplicado con HTTP 422 y la llave primaria protege también las escrituras simultáneas. Una petición manipulada con un cargo ajeno al departamento recibe el mismo código antes del guardado.
-4. Edita el dato observado y vuelve al comparador. Eliminar una cuenta también la retira del directorio. La opción **Simular corrección** guarda una revisión en el navegador; los cambios del administrador se guardan en la base.
+4. Edita el dato observado y vuelve al comparador. Eliminar una cuenta también la retira del directorio. La opción **Previsualizar corrección** guarda una vista previa en el navegador; los cambios del administrador se guardan en la base.
 
 ## Organización MVC
 
@@ -32,8 +32,8 @@ Abre http://127.0.0.1:4173 y entra en **Administrar cuentas** con la clave elegi
 | Controlador | `app.py` | Autenticación, protección CSRF, validaciones y transacciones. Sirve el comparador desde la misma base. |
 | Vista | `views/`, `index.html`, `assets/js/app.js` | Formularios, selectores dependientes, listado y comparación. |
 
-## Despliegue y evidencia
+## Despliegue
 
 El Blueprint `render.yaml` vincula el servicio web y la base PostgreSQL en el plan gratuito de Render. La clave administrativa se genera en el servicio (Environment → ADMIN_PASSWORD). El panel público usa exclusivamente datos académicos ficticios. La base gratuita actual caduca el **5 de diciembre de 2026** según Render. El servicio puede tardar en despertar después de un período sin visitas. El comando de inicio es `python app.py`.
 
-Ejecuta `python -m unittest discover -s tests` para probar la integración con una base temporal. Se verificaron el despliegue, el login y los selectores dependientes en el navegador. El recorrido de la defensa está en [el guion](docs/VIDEO.md). El video final con la voz del autor está pendiente de grabación y publicación. La [memoria de Progreso 1](docs/PROGRESO1.md) recoge la maquetación original.
+Ejecuta `python -m unittest discover -s tests` para probar la integración con una base temporal. Se verificaron el despliegue, el login y los selectores dependientes en el navegador.

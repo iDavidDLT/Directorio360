@@ -1,6 +1,6 @@
 'use strict';
 
-// El servidor real de AD queda fuera de esta entrega de maquetación.
+// Los datos de las cuentas proceden del servidor.
 const accounts = JSON.parse(document.querySelector("#directory-data").textContent);
 const storageKey = 'directorio360-mvc-v1';
 const directorySnapshot = JSON.stringify(accounts);
@@ -120,7 +120,7 @@ function renderActivity() {
   const initial = [
     { title: "Comparación de " + firstId + " preparada", detail: 'Perfil de referencia del directorio', time: 'Inicio' },
     { title: 'Perfiles de referencia cargados', detail: 'Ventas, Tecnología y Finanzas', time: 'Inicio' },
-    { title: 'Espacio de prueba listo', detail: accounts.length + " cuentas · " + accounts.length * 6 + " criterios", time: 'Inicio' },
+    { title: 'Directorio cargado', detail: accounts.length + " cuentas · " + accounts.length * 6 + " criterios", time: 'Inicio' },
   ];
   $('#activity-list').innerHTML = [...events, ...initial].slice(0, 4).map((event, index) => `<li class="timeline__item"><span class="timeline__icon">${icon(index === 0 ? 'compare' : index === 1 ? 'shield' : 'check')}</span><div class="timeline__body"><p>${escapeHTML(event.title)}</p><span>${escapeHTML(event.detail)}</span></div><time class="timeline__time">${escapeHTML(event.time)}</time></li>`).join('');
 }
@@ -136,7 +136,7 @@ $('#accounts-list').addEventListener('click', (event) => {
   comparisonNumber++;
   renderComparison(); renderDirectory();
   $('#comparison-time').textContent = `Vista consultada · ${timeNow()}`;
-  addEvent(`Comparación de ${selectedId} consultada`, 'Referencia esperada frente a datos de prueba');
+  addEvent(`Comparación de ${selectedId} consultada`, 'Perfil esperado frente a datos del directorio');
   $('#comparaciones').scrollIntoView({ behavior: 'smooth', block: 'start' });
   // El botón seleccionado está debajo del panel; el foco anuncia el nuevo resultado.
   $('#comparison-title').tabIndex = -1;
@@ -159,7 +159,7 @@ $('#compare-button').addEventListener('click', async () => {
   comparisonNumber++;
   renderComparison();
   $('#comparison-time').textContent = `Actualizada · ${timeNow()}`;
-  addEvent(`Nueva comparación de ${selectedId}`, 'Simulación completada sobre datos locales');
+  addEvent(`Nueva comparación de ${selectedId}`, 'Comparación actualizada con los datos cargados');
   button.innerHTML = `${icon('plus')}Nueva comparación`;
   button.disabled = false;
   isComparing = false;
@@ -192,9 +192,9 @@ $('#review-form').addEventListener('submit', (event) => {
   const row = getCriteria(account).find((item) => item.id === field && !item.matches);
   if (!row) return;
   corrections.push({ account: selectedId, field });
-  addEvent(`Corrección simulada: ${row.name}`, `${selectedId} · ${row.observed} → ${row.expected}`);
+  addEvent(`Vista previa: ${row.name}`, `${selectedId} · ${row.observed} → ${row.expected}`);
   closeDialog(); render();
-  showToast(`${row.name} corregido en la demostración. Los demás criterios se conservan.`);
+  showToast(`${row.name} actualizado en la vista previa.`);
 });
 
 $('#export-button').addEventListener('click', () => {
@@ -210,10 +210,10 @@ $('#export-button').addEventListener('click', () => {
 $('#reset-button').addEventListener('click', () => {
   corrections = []; events = []; comparisonNumber = 1; selectedId = firstId;
   $('#account-search').value = ''; $('#account-filter').value = 'all';
-  $('#comparison-time').textContent = 'Captura de demostración';
+  $('#comparison-time').textContent = 'Datos del directorio';
   criteriaFilter = 'all';
   document.querySelectorAll('[data-criteria]').forEach((button) => { const active = button.dataset.criteria === 'all'; button.classList.toggle('comparison__tab--active', active); button.setAttribute('aria-pressed', active); });
-  saveState(); render(); showToast('La demostración volvió a su estado inicial.');
+  saveState(); render(); showToast('Vista restablecida con los datos del directorio.');
 });
 
 function setMenu(open) {

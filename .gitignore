@@ -5,3 +5,13 @@ node_modules/
 __pycache__/
 .venv/
 .env
+
+# Material personal de grabación y entrega
+docs/VIDEO.md
+docs/PROGRESO1.md
+entrega/
+evidencias/
+grabaciones/
+*.mp4
+*.webm
+*.wav
